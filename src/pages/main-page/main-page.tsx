@@ -8,8 +8,6 @@ export default function MainPage() {
       <Hero />
 
       <Products/>
-
-      <Footer/>
     </div>
   );
 }
