@@ -5,6 +5,9 @@ import PageLoader from "../../components/common/page-loader";
 import NotFoundCard from "../../components/common/not-found-card";
 import { ShoppingBag, Star, User } from "@phosphor-icons/react";
 import { Button } from "../../components/ui/button";
+import Select from "../../components/ui/select";
+import { useState } from "react";
+import Modal from "../../components/ui/modal";
 
 export default function ProductDetails() {
   const { id = "" } = useParams();

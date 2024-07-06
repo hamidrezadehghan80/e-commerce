@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import ProductDetails from "./pages/product/product-details";
 import MainPage from "./pages/main-page/main-page";
 import Footer from "./components/layout/footer";
+import NotFoundPage from "./pages/not-found/not-found";
 
 function App() {
   return (
@@ -19,6 +20,10 @@ function App() {
             <Route
               path={AppRoutes.Product + "/:id"}
               element={<ProductDetails />}
+            ></Route>
+             <Route
+              path={"*"}
+              element={<NotFoundPage/>}
             ></Route>
           </Routes>
           <Footer/>
