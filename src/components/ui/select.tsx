@@ -1,16 +1,16 @@
 import React from "react";
 import { cn } from "../../libs/utils";
 
-interface Option {
+export interface ISelectOption {
   value: string;
   label: string;
 }
 
-interface SelectProps {
+interface ISelectProps {
   label?: string;
   value: string;
   onChange: (value: string) => void;
-  options: Option[];
+  options: ISelectOption[];
   placeholder?: string;
   className?: string;
 }
@@ -22,7 +22,7 @@ export default function Select({
   options,
   placeholder,
   className,
-}: SelectProps) {
+}: ISelectProps) {
   return (
     <div className={cn("w-fit", className)}>
       {label && (

@@ -3,9 +3,9 @@ import { XCircle } from "@phosphor-icons/react";
 import { cn } from "../../libs/utils";
 import { ReactNode } from "react";
 
-interface ModalProps {
+interface IModalProps {
   open: boolean;
-  onChange: (isOpen: boolean) => void;
+  onOpenChange: (isOpen: boolean) => void;
   title?: string;
   children: ReactNode;
   className?: string;
@@ -13,15 +13,15 @@ interface ModalProps {
 
 export default function Modal({
   open,
-  onChange,
+ onOpenChange,
   title,
   children,
   className,
-}: ModalProps) {
+}: IModalProps) {
   if (!open) return null;
 
   const handleClose = () => {
-    onChange(false);
+    onOpenChange(false);
   };
 
   return createPortal(

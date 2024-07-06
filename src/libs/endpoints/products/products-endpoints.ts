@@ -42,6 +42,13 @@ const endpoints = makeApi([
     ],
     response: ProductSchema,
   },
+  {
+    method: "get",
+    path: "/products/categories",
+    alias: "queryCategories",
+    requestFormat: "json",
+    response: z.array(z.string()),
+  },
 ]);
 
 const client = new Zodios(BASE_API_URL, endpoints, {
