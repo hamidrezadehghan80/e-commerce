@@ -5,6 +5,7 @@ import ProductDetails from "./pages/product/product-details";
 import MainPage from "./pages/main-page/main-page";
 import Footer from "./components/layout/footer";
 import NotFoundPage from "./pages/not-found/not-found";
+import Cart from "./pages/cart/cart";
 
 function App() {
   return (
@@ -21,12 +22,10 @@ function App() {
               path={AppRoutes.Product + "/:id"}
               element={<ProductDetails />}
             ></Route>
-             <Route
-              path={"*"}
-              element={<NotFoundPage/>}
-            ></Route>
+            <Route path={AppRoutes.cart} element={<Cart />}></Route>
+            <Route path={"*"} element={<NotFoundPage />}></Route>
           </Routes>
-          <Footer/>
+          <Footer />
         </div>
       </Router>
     </Providers>

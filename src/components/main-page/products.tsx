@@ -142,7 +142,7 @@ export default function Products() {
   
 
   return (
-    <div id="products" className="container w-full flex flex-col gap-8 mt-10">
+    <div id="products" className="container w-full flex flex-col gap-8 my-10">
       <div className="flex items-center justify-between gap-4 relative">
 
         <div className="bg-white border border-neutral-200 rounded-md px-2  flex items-center gap-1">

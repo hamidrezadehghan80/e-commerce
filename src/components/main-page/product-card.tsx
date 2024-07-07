@@ -1,6 +1,6 @@
 import { ShoppingCart, Star } from "@phosphor-icons/react";
 import { IProduct } from "../../libs/endpoints/products/products-schemas";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AppRoutes } from "../../libs/routes";
 // import { Link } from "react-router-dom";
 
@@ -25,12 +25,12 @@ export default function ProductCard({ product }: { product: IProduct }) {
         <p className="text-neutral-500 capitalize no-underline hover:underline">
           {product.category}
         </p>
-        <a
-          href={AppRoutes.Product + "/" + product.id}
+        <Link
+          to={AppRoutes.Product + "/" + product.id}
           className="font-semibold"
         >
           {product.title}
-        </a>
+        </Link>
         <p className="mt-auto text-xl font-bold">${product.price}</p>
 
         <div className="flex items-center gap-2">

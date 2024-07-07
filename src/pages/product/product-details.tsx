@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import MainHeader from "../../components/layout/main-header";
 import { productHooks } from "../../libs/endpoints/products/products-endpoints";
 import PageLoader from "../../components/common/page-loader";
@@ -12,10 +12,9 @@ import {
   User,
 } from "@phosphor-icons/react";
 import { Button } from "../../components/ui/button";
-import Select from "../../components/ui/select";
 import { useContext, useState } from "react";
-import Modal from "../../components/ui/modal";
 import CartContext from "../../libs/contexts/cart/cart-context";
+import { AppRoutes } from "../../libs/routes";
 
 export default function ProductDetails() {
   const { id = "" } = useParams();
@@ -42,7 +41,7 @@ export default function ProductDetails() {
   const foundedProduct = cart.products.find(
     (cartItem) => cartItem.product.id === product?.id
   );
-  
+
   return (
     <div className="h-full container flex flex-col px-6">
       <MainHeader className="px-0" />
@@ -99,12 +98,15 @@ export default function ProductDetails() {
               <p className="text-neutral-500">{product.description}</p>
 
               {foundedProduct ? (
-                <div className="flex items-center gap-4">
-                  <div className="flex flex-col gap-1 text-sm">
+                <div className="flex items-center gap-6">
+                  <div className="flex flex-col gap-1 text-sm font-semibold">
                     <p>In your cart</p>
-                    <a className="text-sky-600 hover:underline" href={"/cart"}>
+                    <Link
+                      className="text-sky-600 hover:underline"
+                      to={AppRoutes.cart}
+                    >
                       Cart
-                    </a>
+                    </Link>
                   </div>
                   <div className="shadow p-3 rounded-md flex items-center justify-between gap-4 text-sm font-semibold text-sky-600">
                     <button
@@ -130,7 +132,6 @@ export default function ProductDetails() {
                       <Plus size={20} className="fill-sky-600" />
                     </button>
                   </div>
-        
                 </div>
               ) : (
                 <Button

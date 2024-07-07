@@ -1,11 +1,19 @@
-import { createContext, ReactNode, useReducer } from "react";
+import { createContext, ReactNode, useEffect, useReducer } from "react";
 import { ICartContextType } from "./types";
-import { cartReducer, initialState } from "./cart-reducer";
+import {
+  cartReducer,
+  initialState,
+  saveStateToLocalStorage,
+} from "./cart-reducer";
 import { IProduct } from "../../endpoints/products/products-schemas";
 import CartContext from "./cart-context";
 
 export default function CartProvider({ children }: { children: ReactNode }) {
   const [state, dispatch] = useReducer(cartReducer, initialState);
+
+  useEffect(() => {
+    saveStateToLocalStorage(state);
+  }, [state]);
 
   const addProduct = (product: IProduct) => {
     dispatch({ type: "ADD_PRODUCT", payload: product });

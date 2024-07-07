@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { AppRoutes } from "../../libs/routes";
 
 export default function NotFoundPage() {
@@ -8,9 +9,9 @@ export default function NotFoundPage() {
         <div className="h-8 w-[2px] rounded-full bg-neutral-800 dark:bg-neutral-200" />
         <p> This Page could not be found</p>
       </div>
-      <a href={AppRoutes.MainPage} className="text-sky-600">
+      <Link to={AppRoutes.MainPage} className="text-sky-600">
         go to home page
-      </a>
+      </Link>
     </div>
   );
 }
