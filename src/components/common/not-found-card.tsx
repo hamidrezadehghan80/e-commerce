@@ -1,4 +1,4 @@
-export default function NotFoundCard({title} : {title?:string}){
+export default function NotFoundCard({ title }: { title?: string }) {
   return (
     <div className="flex w-full gap-1 py-6 items-center text-neutral-500 justify-center flex-col">
       <svg
@@ -16,8 +16,9 @@ export default function NotFoundCard({title} : {title?:string}){
         />
       </svg>
 
-      <span className="font-semibold text-base">{title ?? "No data founded!"}</span>
+      <span className="font-semibold text-base">
+        {title ?? "No data found!"}
+      </span>
     </div>
   );
-};
-
+}

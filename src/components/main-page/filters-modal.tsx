@@ -13,7 +13,6 @@ export default function FiltersModal({
   sortOptions,
   defaultFilters,
 }: {
-
   onSubmit: (filters: IFilters) => void;
   onReset: () => void;
   categoryOptions: ISelectOption[];
@@ -24,8 +23,7 @@ export default function FiltersModal({
 
   const [filtersState, setFiltersState] = useState<IFilters>(defaultFilters);
 
-  console.log(defaultFilters);
-  
+  // console.log(defaultFilters);
 
   return (
     <>
@@ -75,7 +73,7 @@ export default function FiltersModal({
             </div>
 
             <RangeSlider
-            key={`${defaultFilters.priceRange.max} ${defaultFilters.priceRange.min}`}
+              key={`${defaultFilters.priceRange.max} ${defaultFilters.priceRange.min}`}
               min={defaultFilters.priceRange.min}
               max={defaultFilters.priceRange.max}
               value={filtersState.priceRange}
@@ -89,7 +87,7 @@ export default function FiltersModal({
           <div className="flex flex-col gap-4">
             <div className="flex items-center justify-between gap-2">
               <p>Rate range</p>
-              <p>
+              <p className="px-2 py-1 rounded-full bg-sky-600 text-white text-sm">
                 {`${filtersState.rateRange.min} - ${filtersState.rateRange.max}`}
               </p>
             </div>
