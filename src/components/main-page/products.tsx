@@ -138,19 +138,12 @@ export default function Products() {
     });
 
     return filteredProducts;
-  }, [filters]);
-
-  console.log(filters.search);
+  }, [filters, productsList]);
+  
 
   return (
     <div id="products" className="container w-full flex flex-col gap-8 mt-10">
       <div className="flex items-center justify-between gap-4 relative">
-        {/* <Select
-          value={sort}
-          onChange={(newValue) => setSort(newValue as SortOptions)}
-          options={sortOptions}
-          placeholder="Sort products"
-        /> */}
 
         <div className="bg-white border border-neutral-200 rounded-md px-2  flex items-center gap-1">
           <MagnifyingGlass size={20} />

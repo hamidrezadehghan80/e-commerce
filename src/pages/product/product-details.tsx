@@ -3,11 +3,19 @@ import MainHeader from "../../components/layout/main-header";
 import { productHooks } from "../../libs/endpoints/products/products-endpoints";
 import PageLoader from "../../components/common/page-loader";
 import NotFoundCard from "../../components/common/not-found-card";
-import { ShoppingBag, Star, User } from "@phosphor-icons/react";
+import {
+  Minus,
+  Plus,
+  ShoppingBag,
+  Star,
+  Trash,
+  User,
+} from "@phosphor-icons/react";
 import { Button } from "../../components/ui/button";
 import Select from "../../components/ui/select";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Modal from "../../components/ui/modal";
+import CartContext from "../../libs/contexts/cart/cart-context";
 
 export default function ProductDetails() {
   const { id = "" } = useParams();
@@ -25,6 +33,16 @@ export default function ProductDetails() {
 
   const starCount = Math.floor(product?.rating.rate || 0);
 
+  const cartContext = useContext(CartContext);
+  if (!cartContext)
+    throw new Error("CartContext must be used within CartProvider");
+
+  const { state: cart, addProduct, removeProduct, editProduct } = cartContext;
+
+  const foundedProduct = cart.products.find(
+    (cartItem) => cartItem.product.id === product?.id
+  );
+  
   return (
     <div className="h-full container flex flex-col px-6">
       <MainHeader className="px-0" />
@@ -80,10 +98,49 @@ export default function ProductDetails() {
 
               <p className="text-neutral-500">{product.description}</p>
 
-              <Button className="flex items-center gap-2 w-fit min-w-[15rem] mt-6">
-                <ShoppingBag width={24} height={24} weight="duotone" />
-                <p className="font-semibold capitalize">Add to cart</p>
-              </Button>
+              {foundedProduct ? (
+                <div className="flex items-center gap-4">
+                  <div className="flex flex-col gap-1 text-sm">
+                    <p>In your cart</p>
+                    <a className="text-sky-600 hover:underline" href={"/cart"}>
+                      Cart
+                    </a>
+                  </div>
+                  <div className="shadow p-3 rounded-md flex items-center justify-between gap-4 text-sm font-semibold text-sky-600">
+                    <button
+                      onClick={() =>
+                        foundedProduct.orderNum === 1
+                          ? removeProduct(product.id)
+                          : editProduct(product.id, foundedProduct.orderNum - 1)
+                      }
+                    >
+                      {foundedProduct.orderNum === 1 ? (
+                        <Trash size={20} className="fill-sky-600" />
+                      ) : (
+                        <Minus size={20} className="fill-sky-600" />
+                      )}
+                    </button>
+
+                    <p>{foundedProduct.orderNum}</p>
+                    <button
+                      onClick={() =>
+                        editProduct(product.id, foundedProduct.orderNum + 1)
+                      }
+                    >
+                      <Plus size={20} className="fill-sky-600" />
+                    </button>
+                  </div>
+        
+                </div>
+              ) : (
+                <Button
+                  className="flex items-center gap-2 w-fit min-w-[15rem] mt-6"
+                  onClick={() => addProduct(product)}
+                >
+                  <ShoppingBag width={24} height={24} weight="duotone" />
+                  <p className="font-semibold capitalize">Add to cart</p>
+                </Button>
+              )}
             </div>
           </div>
         ) : (

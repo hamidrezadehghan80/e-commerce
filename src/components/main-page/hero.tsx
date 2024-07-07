@@ -10,7 +10,7 @@ export default function Hero() {
           "url(" + require("../../assets/image/bg-hero.jpg") + ")",
       }}
     >
-      <div className="container flex flex-col gap-4 w-full h-full relative">
+      <div className="container flex flex-col gap-4 w-full h-full relative text-white">
         <MainHeader />
         <div className="flex flex-col gap-4 absolute top-1/2 start-1/2 -translate-x-1/2 -translate-y-1/2">
           <h2 className="uppercase font-bold text-6xl">Fresh Fashion Finds</h2>
