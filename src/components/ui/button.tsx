@@ -2,16 +2,13 @@ import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../../libs/utils";
 
-
 const buttonVariants = cva(
   "inline-flex items-center justify-center rounded-full text-sm  font-normal transition-colors focus-visible:outline-none disabled:pointer-events-none disabled:!cursor-not-allowed disabled:opacity-50 md:rounded-md",
   {
     variants: {
       variant: {
-        default:
-          "bg-neutral-800 text-neutral-100 hover:bg-opacity-95",
-        destructive:
-          "bg-error text-neutral-50 hover:bg-error/90",
+        default: "bg-neutral-800 text-neutral-100 hover:bg-opacity-95",
+        destructive: "bg-red-600 text-white hover:bg-red-600/90",
         outline:
           "border border-neutral-300 bg-transparent text-black-1 hover:bg-neutral-100",
         secondary:
@@ -31,17 +28,15 @@ const buttonVariants = cva(
       variant: "default",
       size: "default",
     },
-  },
+  }
 );
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
-}
+    VariantProps<typeof buttonVariants> {}
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, ...props }, ref) => {
- 
     return (
       <button
         className={cn(buttonVariants({ variant, size, className }))}
@@ -49,7 +44,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       />
     );
-  },
+  }
 );
 Button.displayName = "Button";
 

@@ -32,7 +32,6 @@ export const cartReducer = (
   state: ICartState,
   action: ICartAction
 ): ICartState => {
-  let newState: ICartState;
 
   switch (action.type) {
     case "ADD_PRODUCT":

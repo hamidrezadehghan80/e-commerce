@@ -2,7 +2,7 @@ import { ShoppingBagOpen } from "@phosphor-icons/react";
 import { cn } from "../../libs/utils";
 import { useContext } from "react";
 import CartContext from "../../libs/contexts/cart/cart-context";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AppRoutes } from "../../libs/routes";
 
 export default function MainHeader({ className }: { className?: string }) {
@@ -19,21 +19,48 @@ export default function MainHeader({ className }: { className?: string }) {
 
   const navigate = useNavigate();
 
+  const navbarLinks = [
+    {
+      title: "Custom products",
+      href: AppRoutes.CustomProduct,
+    },
+    {
+      title: "Add product",
+      href: AppRoutes.CreateCustomProduct,
+    },
+  ];
+
   return (
     <div
       className={cn("flex items-center justify-between py-6 px-12", className)}
     >
-      <button onClick={() => navigate(AppRoutes.MainPage)} className="flex items-center gap-1">
-        <img
-          alt="E-Commerce"
-          src="/image/black-logo.png"
-          width={32}
-          height={32}
-        />
-        <h1 className="text-xl font-semibold">BeautyFashion</h1>
-      </button>
+      <div className="flex items-center gap-8">
+        <button
+          onClick={() => navigate(AppRoutes.MainPage)}
+          className="flex items-center gap-1"
+        >
+          <img
+            alt="E-Commerce"
+            src="/image/black-logo.png"
+            width={32}
+            height={32}
+          />
+          <h1 className="text-xl font-semibold">BeautyFashion</h1>
+        </button>
+        <div className="flex items-center gap-4">
+          {navbarLinks.map((link) => (
+            <Link
+              key={link.href}
+              to={link.href}
+              className="text-sm font-semibold"
+            >
+              {link.title}
+            </Link>
+          ))}
+        </div>
+      </div>
 
-      <button className="relative" onClick={() => navigate(AppRoutes.cart)}>
+      <button className="relative" onClick={() => navigate(AppRoutes.Cart)}>
         {cartItemsCount > 0 && (
           <span className="absolute -top-1 -end-1 text-2xs bg-red-600 text-white rounded-full flex items-center justify-center size-4">
             {cartItemsCount}

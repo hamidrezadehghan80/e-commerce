@@ -6,6 +6,7 @@ import { Input } from "../ui/input";
 import { MagnifyingGlass } from "@phosphor-icons/react";
 import NotFoundCard from "../common/not-found-card";
 import PageLoader from "../common/page-loader";
+import { IProduct } from "../../libs/endpoints/products/products-schemas";
 
 export type SortOptions =
   | "price-asc"
@@ -27,9 +28,15 @@ export interface IFilters {
   search: string;
 }
 
-export default function Products() {
-  const { data, isLoading, refetch } = productHooks.useQueryProducts();
-  const productsList = data || [];
+export default function Products({
+  title,
+  productsList,
+  isLoading,
+}: {
+  title: string;
+  productsList: IProduct[];
+  isLoading: boolean;
+}) {
 
   const { data: categories } = productHooks.useQueryCategories();
   const categoriesOptions =
@@ -89,7 +96,7 @@ export default function Products() {
   const [filters, setFilters] = useState<IFilters>(defaultFilters);
 
   const filteredProducts = useMemo(() => {
-    const sortedProducts = productsList.sort((productA, productB) => {
+    const sortedProducts = [...productsList].sort((productA, productB) => {
       if (filters.sort) {
         const sortType = filters.sort;
 
@@ -156,14 +163,13 @@ export default function Products() {
         </div>
 
         <p className="text-3xl/7 absolute left-1/2 -translate-x-1/2 capitalize font-bold">
-          Explore our products
+          {title}
         </p>
 
         <FiltersModal
           onSubmit={(newFilters) => setFilters(newFilters)}
           onReset={() => {
             setFilters(defaultFilters);
-            refetch();
           }}
           categoryOptions={categoriesOptions}
           sortOptions={sortOptions}

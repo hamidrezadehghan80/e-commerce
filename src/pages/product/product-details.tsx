@@ -12,7 +12,7 @@ import {
   User,
 } from "@phosphor-icons/react";
 import { Button } from "../../components/ui/button";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import CartContext from "../../libs/contexts/cart/cart-context";
 import { AppRoutes } from "../../libs/routes";
 
@@ -30,7 +30,7 @@ export default function ProductDetails() {
     }
   );
 
-  const starCount = Math.floor(product?.rating.rate || 0);
+  const starCount = Math.round(product?.rating.rate || 0);
 
   const cartContext = useContext(CartContext);
   if (!cartContext)
@@ -103,7 +103,7 @@ export default function ProductDetails() {
                     <p>In your cart</p>
                     <Link
                       className="text-sky-600 hover:underline"
-                      to={AppRoutes.cart}
+                      to={AppRoutes.Cart}
                     >
                       Cart
                     </Link>

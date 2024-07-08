@@ -27,7 +27,7 @@ export default function Cart() {
       <MainHeader className="px-0" />
 
       {cart.products.length > 0 ? (
-        <div className="flex gap-6 items-start mt-6">
+        <div className="flex gap-6 items-start my-6">
           <div className="border rounded-md border-neutral-200 p-4 flex flex-col gap-6 flex-1">
             <div className="flex items-start gap-4 justify-between w-full">
               <div className="flex flex-col gap-1">
@@ -68,7 +68,7 @@ export default function Cart() {
           </div>
         </div>
       ) : (
-        <div className="flex items-center justify-center text-center p-6 flex-col gap-2 border rounded-md mt-8">
+        <div className="flex items-center justify-center text-center p-6 flex-col gap-2 border rounded-md my-8">
           <EmptyCartIcon />
 
           <p className="text-lg mt-4">Your cart is empty</p>

@@ -13,6 +13,8 @@ interface ISelectProps {
   options: ISelectOption[];
   placeholder?: string;
   className?: string;
+  color?: "default" | "danger";
+  error?: string;
 }
 
 export default function Select({
@@ -22,6 +24,8 @@ export default function Select({
   options,
   placeholder,
   className,
+  color,
+  error,
 }: ISelectProps) {
   return (
     <div className={cn("w-fit", className)}>
@@ -36,7 +40,12 @@ export default function Select({
           onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
             onChange(e.target.value)
           }
-          className="min-w-64 bg-white px-3 py-2 pr-10 transition-all cursor-pointer border border-neutral-200 rounded-lg focus:outline-none focus:border focus:border-neutral-200"
+          className={cn(
+            "min-w-64 bg-white px-3 py-2 pr-10 transition-all cursor-pointer border border-neutral-200 rounded-lg focus:outline-none focus:border focus:border-neutral-200",
+            {
+              "border-red-600 focus-within:border-red-600": color === "danger",
+            }
+          )}
         >
           {placeholder && (
             <option
@@ -59,6 +68,7 @@ export default function Select({
           ))}
         </select>
       </div>
+      {error && <p className="text-sm text-red-600">{error}</p>}
     </div>
   );
 }
