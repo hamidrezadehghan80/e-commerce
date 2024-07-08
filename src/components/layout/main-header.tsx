@@ -30,7 +30,7 @@ export default function MainHeader({ className }: { className?: string }) {
           width={32}
           height={32}
         />
-        <h1 className="text-xl font-semibold">B Commerce</h1>
+        <h1 className="text-xl font-semibold">BeautyFashion</h1>
       </button>
 
       <button className="relative" onClick={() => navigate(AppRoutes.cart)}>

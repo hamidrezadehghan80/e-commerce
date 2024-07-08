@@ -28,7 +28,7 @@ export interface IFilters {
 }
 
 export default function Products() {
-  const { data, isLoading } = productHooks.useQueryProducts();
+  const { data, isLoading, refetch } = productHooks.useQueryProducts();
   const productsList = data || [];
 
   const { data: categories } = productHooks.useQueryCategories();
@@ -139,12 +139,10 @@ export default function Products() {
 
     return filteredProducts;
   }, [filters, productsList]);
-  
 
   return (
     <div id="products" className="container w-full flex flex-col gap-8 my-10">
       <div className="flex items-center justify-between gap-4 relative">
-
         <div className="bg-white border border-neutral-200 rounded-md px-2  flex items-center gap-1">
           <MagnifyingGlass size={20} />
           <Input
@@ -163,7 +161,10 @@ export default function Products() {
 
         <FiltersModal
           onSubmit={(newFilters) => setFilters(newFilters)}
-          onReset={() => setFilters(defaultFilters)}
+          onReset={() => {
+            setFilters(defaultFilters);
+            refetch();
+          }}
           categoryOptions={categoriesOptions}
           sortOptions={sortOptions}
           defaultFilters={defaultFilters}

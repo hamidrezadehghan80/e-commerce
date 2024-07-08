@@ -36,38 +36,31 @@ export const cartReducer = (
 
   switch (action.type) {
     case "ADD_PRODUCT":
-      newState = {
+      return( {
         products: [
           ...state.products,
           { product: action.payload, orderNum: 1, id: action.payload.id },
         ],
-      };
-      break;
+      });
 
     case "EDIT_PRODUCT":
-      newState = {
+      return( {
         products: state.products.map((product) =>
           product.id !== action.payload.id
             ? product
             : { ...product, orderNum: action.payload.orderNum }
         ),
-      };
-      break;
+      });
     case "REMOVE_PRODUCT":
-      newState = {
+      return({
         products: state.products.filter(
           (product) => product.id !== action.payload.id
         ),
-      };
-      break;
+      });
     case "CLEAR_CART":
-      newState = { products: [] };
-      break;
+      return({ products: [] });
 
     default:
       return state;
   }
-
-  saveStateToLocalStorage(newState);
-  return newState;
 };
