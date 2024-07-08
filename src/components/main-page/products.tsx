@@ -149,7 +149,7 @@ export default function Products({
 
   return (
     <div id="products" className="container w-full flex flex-col gap-8 my-10">
-      <div className="flex items-center justify-between gap-4 relative">
+      <div className="flex md:flex-row flex-col items-center justify-between gap-4 relative">
         <div className="bg-white border border-neutral-200 rounded-md px-2  flex items-center gap-1">
           <MagnifyingGlass size={20} />
           <Input
@@ -162,7 +162,7 @@ export default function Products({
           />
         </div>
 
-        <p className="text-3xl/7 absolute left-1/2 -translate-x-1/2 capitalize font-bold">
+        <p className="md:text-3xl/7 text-2xl md:absolute md:left-1/2 md:-translate-x-1/2 capitalize font-bold">
           {title}
         </p>
 
@@ -179,7 +179,7 @@ export default function Products({
       </div>
 
       <PageLoader isLoading={isLoading}>
-        <div className="grid grid-cols-5 gap-x-8 gap-y-12 items-stretch">
+        <div className="grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1  gap-x-8 gap-y-12 items-stretch">
           {filteredProducts.length > 0 ? (
             <>
               {" "}

@@ -91,23 +91,23 @@ export default function CreateCustomProduct() {
   };
 
   return (
-    <div className="h-full container flex flex-col gap-6 px-6">
+    <div className="container md:min-h-full flex flex-col gap-6 px-6">
       <MainHeader className="px-0" />
 
       <form
         onSubmit={form.handleSubmit(onSubmit)}
         className="flex flex-col gap-6 my-6"
       >
-        <div className="flex items-center gap-4 justify-between">
-          <h2 className="font-semibold text-xl">Create Custom Product</h2>
+        <div className="flex flex-col items-start md:items-center md:flex-row gap-4 justify-between">
+          <h2 className="font-semibold md:text-xl text-lg">Create Custom Product</h2>
 
           <Button variant={"default"} type="submit">
             Save
           </Button>
         </div>
 
-        <div className="flex items-start gap-6">
-          <div className="flex-1 grid grid-cols-2 gap-4">
+        <div className="flex flex-col md:flex-row items-start gap-6">
+          <div className="flex-1 w-full grid grid-cols-1 md:grid-cols-2  gap-4">
             <div className="flex flex-col gap-1 text-sm">
               <p>Title</p>
               <Input
@@ -129,7 +129,7 @@ export default function CreateCustomProduct() {
               />
             </div>
 
-            <div className="flex flex-col gap-1 col-span-2 text-sm">
+            <div className="flex flex-col gap-1 col-span-1 md:col-span-2 text-sm">
               <p>Description</p>
               <Textarea
                 color={
@@ -141,7 +141,7 @@ export default function CreateCustomProduct() {
                 {...form.register("description")}
               />
             </div>
-            <div className="col-span-2 w-full grid grid-cols-3 gap-4">
+            <div className="md:col-span-2 w-full grid md:grid-cols-3 grid-cols-1 gap-4">
               <div className="flex flex-col gap-1 text-sm">
                 <p>Category</p>
                 <Select
@@ -184,7 +184,7 @@ export default function CreateCustomProduct() {
             </div>
           </div>
 
-          <div className="w-1/4 min-h-44 flex items-center justify-center text-center border rounded-md overflow-hidden">
+          <div className="md:w-1/4 w-full min-h-44 flex items-center justify-center text-center border rounded-md overflow-hidden">
             {form.watch("image") ? (
               <div className="w-full relative">
                 <img

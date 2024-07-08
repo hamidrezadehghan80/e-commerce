@@ -32,9 +32,9 @@ export default function MainHeader({ className }: { className?: string }) {
 
   return (
     <div
-      className={cn("flex items-center justify-between py-6 px-12", className)}
+      className={cn("flex items-center justify-between py-6 px-0 md:px-12", className)}
     >
-      <div className="flex items-center gap-8">
+      <div className="flex items-center md:gap-8 gap-4">
         <button
           onClick={() => navigate(AppRoutes.MainPage)}
           className="flex items-center gap-1"
@@ -45,7 +45,7 @@ export default function MainHeader({ className }: { className?: string }) {
             width={32}
             height={32}
           />
-          <h1 className="text-xl font-semibold">BeautyFashion</h1>
+          <h1 className="text-xl font-semibold hidden md:block">BeautyFashion</h1>
         </button>
         <div className="flex items-center gap-4">
           {navbarLinks.map((link) => (

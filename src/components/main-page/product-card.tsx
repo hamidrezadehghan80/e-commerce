@@ -15,7 +15,7 @@ export default function ProductCard({ product }: { product: IProduct }) {
         <img
           alt=""
           src={product.image}
-          className="w-full h-auto scale-100 hover:scale-110 transition-all"
+          className="w-full max-w-40 lg:max-w-full h-auto scale-100 hover:scale-110 transition-all"
         />
         <button
           onClick={() =>

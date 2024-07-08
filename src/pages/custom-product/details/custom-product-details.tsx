@@ -34,22 +34,22 @@ export default function CustomProductDetails() {
   );
 
   return (
-    <div className="h-full container flex flex-col px-6">
+    <div className="container flex flex-col px-6">
       <MainHeader className="px-0" />
       {product ? (
-        <div className="grid grid-cols-2 w-full items-center">
+        <div className="grid md:grid-cols-2 grid-cols-1 w-full items-center">
           <div className="w-full px-36 py-12 flex items-center justify-center h-full">
             <img
               alt=""
               src={product.image}
-              className="max-w-72 h-auto scale-100 hover:scale-110 transition-all"
+              className="lg:max-w-72 max-w-40 h-auto scale-100 hover:scale-110 transition-all"
             />
           </div>
 
           <div className="flex flex-col gap-6">
             <div className="flex flex-col gap-2">
               <div className="flex items-center justify-between gap-4">
-                <h1 className="text-4xl font-semibold">{product.title}</h1>
+                <h1 className="md:text-4xl text-2xl font-semibold">{product.title}</h1>
 
                 <Button
                   variant={"default"}
@@ -91,11 +91,11 @@ export default function CustomProductDetails() {
               </div>
             </div>
 
-            <p className="text-4xl text-sky-700 font-semibold">
+            <p className="md:text-4xl text-3xl text-sky-700 font-semibold">
               ${product.price}
             </p>
 
-            <p className="text-neutral-500">{product.description}</p>
+            <p className="text-neutral-500 text-sm md:text-base">{product.description}</p>
 
             {foundedProduct ? (
               <div className="flex items-center gap-6">

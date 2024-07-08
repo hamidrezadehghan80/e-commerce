@@ -16,7 +16,7 @@ export default function CustomProducts() {
   
 
   return (
-    <div className="flex flex-col h-full gap-6 container">
+    <div className="flex flex-col gap-6 container">
       <MainHeader className="px-0"/>
       <Products
         productsList={state.products}

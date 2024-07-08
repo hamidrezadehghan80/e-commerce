@@ -27,8 +27,8 @@ export default function Cart() {
       <MainHeader className="px-0" />
 
       {cart.products.length > 0 ? (
-        <div className="flex gap-6 items-start my-6">
-          <div className="border rounded-md border-neutral-200 p-4 flex flex-col gap-6 flex-1">
+        <div className="flex gap-6 items-start flex-col md:flex-row my-6">
+          <div className="border rounded-md border-neutral-200 p-4 flex flex-col gap-6 flex-1 w-full">
             <div className="flex items-start gap-4 justify-between w-full">
               <div className="flex flex-col gap-1">
                 <p className="text-lg font-semibold">Your cart</p>
@@ -57,7 +57,7 @@ export default function Cart() {
             </div>
           </div>
 
-          <div className="p-4 rounded-md border border-neutral-200 flex flex-col gap-4 w-1/4">
+          <div className="p-4 rounded-md border border-neutral-200 flex flex-col gap-4 md:w-1/4 w-full">
             <div className="flex items-center justify-between gap-4">
               <p>Total price</p>
 
