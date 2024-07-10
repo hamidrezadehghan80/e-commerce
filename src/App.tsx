@@ -16,35 +16,38 @@ function App() {
     <Providers>
       <Router>
         <div className="flex flex-col h-full">
-          <Routes>
-            <Route
-              path={AppRoutes.MainPage}
-              caseSensitive={true}
-              element={<MainPage />}
-            ></Route>
-            <Route
-              path={AppRoutes.Product + "/:id"}
-              element={<ProductDetails />}
-            ></Route>
-            <Route path={AppRoutes.Cart} element={<Cart />}></Route>
-            <Route
-              path={AppRoutes.CustomProduct}
-              element={<CustomProducts />}
-            ></Route>
-            <Route
-              path={AppRoutes.CustomProduct + "/:id"}
-              element={<CustomProductDetails />}
-            ></Route>
-            <Route
-              path={AppRoutes.CreateCustomProduct}
-              element={<CreateCustomProduct />}
-            ></Route>
-            <Route
-              path={AppRoutes.EditCustomProduct + "/:id"}
-              element={<EditCustomProduct />}
-            ></Route>
-            <Route path={"*"} element={<NotFoundPage />}></Route>
-          </Routes>
+          <div className="flex-1">
+            <Routes>
+              <Route
+                path={AppRoutes.MainPage}
+                caseSensitive={true}
+                element={<MainPage />}
+              ></Route>
+              <Route
+                path={AppRoutes.Product + "/:id"}
+                element={<ProductDetails />}
+              ></Route>
+              <Route path={AppRoutes.Cart} element={<Cart />}></Route>
+              <Route
+                path={AppRoutes.CustomProduct}
+                element={<CustomProducts />}
+              ></Route>
+              <Route
+                path={AppRoutes.CustomProduct + "/:id"}
+                element={<CustomProductDetails />}
+              ></Route>
+              <Route
+                path={AppRoutes.CreateCustomProduct}
+                element={<CreateCustomProduct />}
+              ></Route>
+              <Route
+                path={AppRoutes.EditCustomProduct + "/:id"}
+                element={<EditCustomProduct />}
+              ></Route>
+              <Route path={"*"} element={<NotFoundPage />}></Route>
+            </Routes>
+          </div>
+
           <Footer />
         </div>
       </Router>
